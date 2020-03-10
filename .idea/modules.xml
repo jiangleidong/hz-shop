@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hz-shop.iml" filepath="$PROJECT_DIR$/hz-shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-commom/project-commom.iml" filepath="$PROJECT_DIR$/project-commom/project-commom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-email/project-email.iml" filepath="$PROJECT_DIR$/project-email/project-email.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-redis/project-redis.iml" filepath="$PROJECT_DIR$/project-redis/project-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-server/project-server.iml" filepath="$PROJECT_DIR$/project-server/project-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-service/project-service.iml" filepath="$PROJECT_DIR$/project-service/project-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-web/project-web.iml" filepath="$PROJECT_DIR$/project-web/project-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-zuul/project-zuul.iml" filepath="$PROJECT_DIR$/project-zuul/project-zuul.iml" />
+    </modules>
+  </component>
+</project>

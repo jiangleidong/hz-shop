@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: user-web
+  mvc:
+    static-path-pattern: /**
+
+
+server:
+  port: 8030
+  servlet:
+    context-path: /
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="project-service" />
+        <module name="project-commom" />
+        <module name="project-web" />
+        <module name="project-zuul" />
+        <module name="project-server" />
+        <module name="project-redis" />
+        <module name="project-email" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hz-shop" target="1.8" />
+      <module name="project-commom" target="1.8" />
+      <module name="project-email" target="1.8" />
+      <module name="project-redis" target="1.8" />
+      <module name="project-server" target="1.8" />
+      <module name="project-service" target="1.8" />
+      <module name="project-web" target="1.8" />
+      <module name="project-zuul" target="1.8" />
+      <module name="shop" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="project-email" options="-parameters" />
+      <module name="project-redis" options="-parameters" />
+      <module name="project-server" options="-parameters" />
+      <module name="project-service" options="-parameters" />
+      <module name="project-web" options="-parameters" />
+      <module name="project-zuul" options="-parameters" />
+    </option>
+  </component>
+</project>

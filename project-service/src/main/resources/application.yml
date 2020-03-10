@@ -1,0 +1,35 @@
+# Mybatis配置.
+mybatis:
+  type-aliases-package: com.qf.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+# 分页助手
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#配置应用名
+spring:
+  application:
+    name: user-service
+
+    # 配置datasource
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.97.249.167/qf-v6?characterEncoding=UTF-8
+    username: root
+    password: 2345
+    type: com.alibaba.druid.pool.DruidDataSource
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    lease-renewal-interval-in-seconds: 60
+
+server:
+  port: 8020
