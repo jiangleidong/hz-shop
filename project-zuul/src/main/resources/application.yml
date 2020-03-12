@@ -1,1 +1,26 @@
+spring:
+  application:
+    name: project-zuul
 
+server:
+  port: 8040
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    cart:
+      path: /**
+      serviceId: user-web
+  sensitive-headers:
+#  ignored-patterns: /assets/**,/basic/**,/css/**,/images/**,/js/**,
+#      stripPrefix: false
+#    api-b:
+#      path: /api/b/**
+#      serviceId: hello-spring-cloud-web-admin-feign
+#  ignored-patterns: /**/admin/**
+#  prefix: /api
+#  strip-prefix: true

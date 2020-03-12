@@ -10,7 +10,7 @@ spring:
     password: oyrivxaqqjyijgad
     default-encoding: utf-8
 
-activeServerUrl: http://localhost:8027/email/active/account/
+activeServerUrl: http://localhost:8030/user/active/
 
 
 eureka:

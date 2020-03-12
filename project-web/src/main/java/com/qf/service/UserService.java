@@ -33,15 +33,14 @@ public class UserService {
         //调用服务的提供者并获得结果并返回
 
         //服务提供者返回的是一个String
-        String uri = "http://user-service/user/login?uname="+tuser.getUname()+"&password="+tuser.getPassword();
-       // String url = "http://user-service/user/login?uname="+user.getUname()+"&password="+user.getPassword();
-        //restTemplate.getForObject(url,Boolean.class,user);
+       //String uri = "http://user-service/user/login?uname="+tuser.getUname()+"&password="+tuser.getPassword();
+        //R forObject = restTemplate.getForObject(uri, R.class);
+
+        String url = "http://user-service/user/login?";
+        R r = restTemplate.postForObject(url, tuser, R.class);
 
 
-        R forObject = restTemplate.getForObject(uri, R.class);
-        //System.out.println(forObject);
-
-        return forObject;
+        return r ;
 
     }
 
@@ -56,7 +55,7 @@ public class UserService {
         //服务提供者返回的是一个String
 
 
-        String uri = "http://email-service/email/send/"+tuser.getEmail()+"/"+ uuid;
+        String uri = "http://user-email/email/send/"+tuser.getEmail()+"/"+ uuid;
 
         R forObject = restTemplate.getForObject(uri, R.class);
         //System.out.println(forObject);
@@ -70,7 +69,7 @@ public class UserService {
     * */
     public boolean save(TUser tuser) {
         String uri = "http://user-service/user/save/";
-        R r= restTemplate.getForObject(uri, R.class, tuser);
+        R r= restTemplate.postForObject(uri, tuser,R.class);
         if (r.getCode()==200){
             return true;
 
@@ -78,6 +77,21 @@ public class UserService {
         return  false;
 
     }
+
+    /*
+     * 通过邮箱信息去修改用户对象数据
+     * */
+    public boolean updatebyemail(TUser tuser) {
+        String uri = "http://user-service/user/updatebyemail/";
+        R r= restTemplate.postForObject(uri, tuser,R.class);
+        if (r.getCode()==200){
+            return true;
+
+        }
+        return  false;
+
+    }
+
 
 
     //当熔断被打开，那么此方法会被调用

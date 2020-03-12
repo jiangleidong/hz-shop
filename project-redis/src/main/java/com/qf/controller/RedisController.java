@@ -1,9 +1,11 @@
 package com.qf.controller;
 
+import com.qf.dto.RedisDTO;
 import com.qf.service.RedisService;
 import com.qf.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -23,18 +25,18 @@ public class RedisController {
 
     @RequestMapping("set")
     @ResponseBody
-    public R set(String key, String value){
-        long time=300;
-        redisService.setAndExpireBySecond(key,value,time, TimeUnit.SECONDS);
+    public R set(@RequestBody RedisDTO redisDTO){
+
+        redisService.setAndExpireBySecond(redisDTO.getKey(),redisDTO.getValue(),redisDTO.getTime(), TimeUnit.SECONDS);
 
         return  R.ok("添加到redis成功");
     }
 
     @RequestMapping("/delect")
     @ResponseBody
-    public R delect(String key){
+    public R delect(@RequestBody RedisDTO redisDTO){
 
-        Boolean delect1 = redisService.delect(key);
+        Boolean delect1 = redisService.delect(redisDTO.getKey());
         if(!delect1){
             return  R.error("删除失败");
         }
@@ -44,10 +46,10 @@ public class RedisController {
 
     @RequestMapping("/get")
     @ResponseBody
-    public R get(String key){
-        long time=300;
-        String value = (String) redisService.getAndExpireBySecond(key, time, TimeUnit.SECONDS);
-        return  R.ok(value,"100",200);
+    public R get(@RequestBody RedisDTO redisDTO){
+        Object value =  redisService.getAndExpireBySecond(redisDTO.getKey(), redisDTO.getTime(), TimeUnit.SECONDS);
+
+        return  R.ok(200,"成功",value);
     }
 
 

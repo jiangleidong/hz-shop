@@ -38,7 +38,9 @@ public class RedisServiceImpl implements RedisService {
     public Object getAndExpireBySecond(Object key, Long timeout, TimeUnit seconds) {
         try{
             Object obj = template.opsForValue().get(key);
+            if(timeout!=null){
             template.expire(key,timeout, TimeUnit.SECONDS);
+            }
             return obj;
         }catch(Exception ex){
            // log.error("【从Redis获取数据失败】 读取数据失败!!! key = {} , value = {}");

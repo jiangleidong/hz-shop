@@ -1,7 +1,12 @@
 package com.qf.controller;
 
+import com.beust.jcommander.IVariableArity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @program: hz-shop
@@ -13,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PageChangeController {
 
     @RequestMapping("/login")
-    public String login()  {
+    public String login(Model model)  {
         return "login";
     }
 
@@ -23,5 +28,8 @@ public class PageChangeController {
         return "register";
     }
 
-
+    @RequestMapping("/shopcart")
+    public String shopcart()  {
+        return "shopcart";
+    }
 }

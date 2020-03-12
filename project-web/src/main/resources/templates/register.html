@@ -36,19 +36,19 @@
 
 							<div class="am-tabs-bd">
 								<div class="am-tab-panel am-active">
-									<form method="post">
+									<form method="post" id="form1" action="/user/email/register" >
 										
 							   <div class="user-email">
-										<label for="email"><i class="am-icon-envelope-o"></i></label>
-										<input type="email" name="" id="email" placeholder="请输入邮箱账号">
+										<label for="email1"><i class="am-icon-envelope-o"></i></label>
+										<input type="email" name="email" id="email1" placeholder="请输入邮箱账号">
                  </div>										
                  <div class="user-pass">
 								    <label for="password"><i class="am-icon-lock"></i></label>
-								    <input type="password" name="" id="password" placeholder="设置密码">
+								    <input type="password" name="password" id="password1" placeholder="设置密码">
                  </div>										
                  <div class="user-pass">
 								    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-								    <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+								    <input type="password" name="passwordRepeat" id="passwordRepeat1" placeholder="确认密码">
                  </div>	
                  
                  </form>
@@ -59,30 +59,30 @@
 										</label>
 							  	</div>
 										<div class="am-cf">
-											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+											<input type="button" onclick="go()" name="" value="注 册"  class="am-btn am-btn-primary am-btn-sm am-fl">
 										</div>
 
 								</div>
 
 								<div class="am-tab-panel">
-									<form method="post">
+									<form method="post" id="phoneform" action="/user/phone/register">
                  <div class="user-phone">
 								    <label for="phone"><i class="am-icon-mobile-phone am-icon-md"></i></label>
-								    <input type="tel" name="" id="phone" placeholder="请输入手机号">
+								    <input type="tel" name="phone" id="phone" placeholder="请输入手机号">
                  </div>																			
 										<div class="verification">
 											<label for="code"><i class="am-icon-code-fork"></i></label>
-											<input type="tel" name="" id="code" placeholder="请输入验证码">
+											<input type="tel" name="code" id="code" placeholder="请输入验证码">
 											<a class="btn" href="javascript:void(0);" onClick="sendMobileCode();" id="sendMobileCode">
 												<span id="dyMobileButton">获取</span></a>
 										</div>
                  <div class="user-pass">
 								    <label for="password"><i class="am-icon-lock"></i></label>
-								    <input type="password" name="" id="password" placeholder="设置密码">
+								    <input type="password" name="password" id="password" placeholder="设置密码">
                  </div>										
                  <div class="user-pass">
 								    <label for="passwordRepeat"><i class="am-icon-lock"></i></label>
-								    <input type="password" name="" id="passwordRepeat" placeholder="确认密码">
+								    <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="确认密码">
                  </div>	
 									</form>
 								 <div class="login-links">
@@ -91,17 +91,13 @@
 										</label>
 							  	</div>
 										<div class="am-cf">
-											<input type="submit" name="" value="注册" class="am-btn am-btn-primary am-btn-sm am-fl">
+											<input type="submit" name="" value="注  册" class="am-btn am-btn-primary am-btn-sm am-fl">
 										</div>
 								
 									<hr>
 								</div>
 
-								<script>
-									$(function() {
-									    $('#doc-my-tabs').tabs();
-									  })
-								</script>
+
 
 							</div>
 						</div>
@@ -132,5 +128,100 @@
 						</div>
 					</div>
 	</body>
+
+
+	<script src="js/jQuery-form.js"></script>
+
+	<script>
+		$(function() {
+			$('#doc-my-tabs').tabs();
+		})
+	</script>
+
+	<script type="text/javascript">
+		// 获取元素
+
+         //判断邮箱是否合法
+		function checkEmail() {
+			// 判断用户名/密码/邮箱是否符合规定,有一项不符合就返回false
+			if (mail == "") {
+				 alert("用户名不能为空");
+				//sname.innerText = "用户名不能为空";
+				//sname.style.color = "red";
+				return false;
+			} else
+				var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$");
+
+				if (!reg.test(mail)) {
+					alert("邮箱不合法");
+					return false;
+				} else if (!password1 == passwordRepeat1) {
+					alert("密码不正确");
+				}
+				return true;
+		}
+
+		function go(){
+			var k= true;
+
+
+			var password1= $("input#password1").val();
+			var passwordRepeat1= $("input#passwordRepeat1").val();
+
+			if ($("input#email1").val() == "") {
+				alert("用户名不能为空");
+				//sname.innerText = "用户名不能为空";
+				//sname.style.color = "red";
+				var k= false;
+
+			} else
+				var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$");
+
+			if (!reg.test($("input#email1").val())) {
+				alert("邮箱不合法");
+				var k= false;
+
+			} else if (password1!=passwordRepeat1||password1==""||password1==null) {
+				alert("密码不能为空或者两次输入密码不相同");
+				var k= false;
+			}
+
+		if(k){
+
+			/** 验证文件是否导入成功  */
+					$("#form1").ajaxSubmit(function(data){
+
+
+					// }
+					// 	if(data.code=="200"){
+					// 		var r =confirm("登录成功,是否跳转首页");
+					// 		if(r){
+					// 			window.location.replace("http://localhost:8030/");
+					// 		}
+					//
+					// 	}
+					// 	if(data.code=="0"){
+					// 		alert(data.message);
+					// 	}
+					// 	if(data.code=="2"){
+					// 		alert(data.message);
+					// 	}
+					//
+					 });
+		}
+		};
+
+
+		// function checkRegister(){
+		//
+		// 	var retName = checkName();
+		// 	var retPwd = checkPwd();
+		//
+		// 	return retName && retPwd;
+		// }
+
+
+
+	</script>
 
 </html>

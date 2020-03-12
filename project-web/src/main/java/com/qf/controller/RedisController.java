@@ -18,25 +18,25 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("/redis")
 public class RedisController {
 
-    @Autowired
-    private RedisService redisService;
-
-    @RequestMapping("/set")
-    @ResponseBody
-    public R set(String key, String value){
-        return redisService.set(key,value);
-    }
-
-
-    @RequestMapping("/delect")
-    @ResponseBody
-    public R delect(String key){
-        return redisService.delect(key);
-    }
-    @RequestMapping("/get")
-    @ResponseBody
-    public R get(String key){
-      return   redisService.get(key);
-    }
+//    @Autowired
+//    private RedisService redisService;
+//
+//    @RequestMapping("/set")
+//    @ResponseBody
+//    public R set(String key, String value,Long time){
+//        return redisService.set(key,value,time);
+//    }
+//
+//
+//    @RequestMapping("/delect")
+//    @ResponseBody
+//    public R delect(String key){
+//        return redisService.delect(key);
+//    }
+//    @RequestMapping("/get")
+//    @ResponseBody
+//    public R get(String key,Long time){
+//      return   redisService.get(key,time);
+//    }
 
 }

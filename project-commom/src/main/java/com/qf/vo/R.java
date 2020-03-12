@@ -22,7 +22,7 @@ public class R implements Serializable {
         return r;
     }
 
-    public static R ok(Object data,String message,Integer code){
+    public static R ok(Integer code,String message,Object data){
         R r = new R();
         r.setCode(code);
         r.setSuccess(true);
@@ -55,6 +55,7 @@ public class R implements Serializable {
 
     public static R error( String message){
         R r = new R();
+        r.setCode(0);
         r.setMessage(message);
         r.setSuccess(false);
         return r;
@@ -102,4 +103,6 @@ public class R implements Serializable {
                 ", data=" + data +
                 '}';
     }
+
+
 }

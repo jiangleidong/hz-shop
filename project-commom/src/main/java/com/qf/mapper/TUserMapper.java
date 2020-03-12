@@ -13,6 +13,9 @@ public interface TUserMapper {
 
     int updateByPrimaryKeySelective(TUser record);
 
+     //通过email查询修改状态（不等于null的都会修改，不删除之前的内容）
+     int updateByEmailSelective(TUser record);
+
     int updateByPrimaryKey(TUser record);
 
     //查询是否存在这个用户
