@@ -6,37 +6,42 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="project-service-productandtype" />
         <module name="project-commom" />
+        <module name="project-service-email" />
         <module name="project-web" />
         <module name="project-zuul" />
-        <module name="project-service-user" />
         <module name="project-server" />
-        <module name="project-redis" />
+        <module name="project-service-user" />
+        <module name="project-web-user" />
         <module name="project-service-orderandcar" />
-        <module name="project-email" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hz-shop" target="1.8" />
       <module name="project-commom" target="1.8" />
-      <module name="project-email" target="1.8" />
       <module name="project-redis" target="1.8" />
       <module name="project-server" target="1.8" />
+      <module name="project-service-email" target="1.8" />
       <module name="project-service-orderandcar" target="1.8" />
+      <module name="project-service-productandtype" target="1.8" />
       <module name="project-service-user" target="1.8" />
       <module name="project-web" target="1.8" />
+      <module name="project-web-user" target="1.8" />
       <module name="project-zuul" target="1.8" />
       <module name="shop" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="project-email" options="-parameters" />
       <module name="project-redis" options="-parameters" />
       <module name="project-server" options="-parameters" />
+      <module name="project-service-email" options="-parameters" />
       <module name="project-service-orderandcar" options="-parameters" />
+      <module name="project-service-productandtype" options="-parameters" />
       <module name="project-service-user" options="-parameters" />
       <module name="project-web" options="-parameters" />
+      <module name="project-web-user" options="-parameters" />
       <module name="project-zuul" options="-parameters" />
     </option>
   </component>

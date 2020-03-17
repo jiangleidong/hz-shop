@@ -42,12 +42,10 @@ public class UserController {
     /*验证用户登录的信息*/
     @RequestMapping("/login")
     @ResponseBody
-    public R login(@RequestBody TUser tuser){
+    public TUser login(@RequestBody TUser tuser){
         TUser tU = userService.checkUser(tuser);
-        if(tU==null){
-            return R.error();
-        }
-        return R.ok(tU);
+
+        return tU;
     }
 
     /*存入用户的信息*/

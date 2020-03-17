@@ -4,12 +4,13 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hz-shop.iml" filepath="$PROJECT_DIR$/hz-shop.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-commom/project-commom.iml" filepath="$PROJECT_DIR$/project-commom/project-commom.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project-email/project-email.iml" filepath="$PROJECT_DIR$/project-email/project-email.iml" />
-      <module fileurl="file://$PROJECT_DIR$/project-redis/project-redis.iml" filepath="$PROJECT_DIR$/project-redis/project-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-server/project-server.iml" filepath="$PROJECT_DIR$/project-server/project-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-service-email/project-service-email.iml" filepath="$PROJECT_DIR$/project-service-email/project-service-email.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-service-orderandcar/project-service-orderandcar.iml" filepath="$PROJECT_DIR$/project-service-orderandcar/project-service-orderandcar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-service-productandtype/project-service-productandtype.iml" filepath="$PROJECT_DIR$/project-service-productandtype/project-service-productandtype.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-service-user/project-service-user.iml" filepath="$PROJECT_DIR$/project-service-user/project-service-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-web/project-web.iml" filepath="$PROJECT_DIR$/project-web/project-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/project-web-user/project-web-user.iml" filepath="$PROJECT_DIR$/project-web-user/project-web-user.iml" />
       <module fileurl="file://$PROJECT_DIR$/project-zuul/project-zuul.iml" filepath="$PROJECT_DIR$/project-zuul/project-zuul.iml" />
     </modules>
   </component>

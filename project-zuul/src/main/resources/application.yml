@@ -1,6 +1,10 @@
 spring:
   application:
     name: project-zuul
+  redis:
+    host: 47.97.249.167
+    port: 6379
+    password: 123456
 
 server:
   port: 8040
@@ -12,11 +16,17 @@ eureka:
 
 zuul:
   routes:
-    cart:
+    cart1:
       path: /**
-      serviceId: user-web
+      serviceId: project-web
+      stripPrefix: true
+    cart2:
+      path: /user/**
+      serviceId: project-web-user
+      stripPrefix: false
+
   sensitive-headers:
-#  ignored-patterns: /assets/**,/basic/**,/css/**,/images/**,/js/**,
+
 #      stripPrefix: false
 #    api-b:
 #      path: /api/b/**

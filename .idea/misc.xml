@@ -6,12 +6,14 @@
         <option value="$PROJECT_DIR$/shop/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/project-web/pom.xml" />
-        <option value="$PROJECT_DIR$/project-redis/pom.xml" />
         <option value="$PROJECT_DIR$/project-zuul/pom.xml" />
         <option value="$PROJECT_DIR$/project-service/pom.xml" />
         <option value="$PROJECT_DIR$/project-email/pom.xml" />
         <option value="$PROJECT_DIR$/project-service-orderandcar/pom.xml" />
         <option value="$PROJECT_DIR$/project-service-user/pom.xml" />
+        <option value="$PROJECT_DIR$/project-service-productandtype/pom.xml" />
+        <option value="$PROJECT_DIR$/project-web-user/pom.xml" />
+        <option value="$PROJECT_DIR$/project-service-email/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

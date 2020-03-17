@@ -28,7 +28,7 @@ import java.util.UUID;
  **/
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -43,11 +43,17 @@ public class UserController {
 
         return service.getone(id);
     }
+    @RequestMapping("user/getone")
+    @ResponseBody
+    public String getone2(Long id) {
+
+        return service.getone(id);
+    }
 
 
     /*登录功能
      * user登录验证,并把登录的user信息放到redis中,设置市场半小时过期*/
-    @RequestMapping("/login")
+    @RequestMapping("/login2")
     @ResponseBody
     public R login(TUser tuser, HttpServletResponse resp, @CookieValue(value = "user-key", required = false) String UserKey) {
         //判断有没有值传入
@@ -63,19 +69,21 @@ public class UserController {
             return R.error("账号密码不正确");
         }
         //正确情况,封装用户信息,存入一个session,存到redis中,设置半小时有效期
-        String id = login.getData().toString();
+
         // 如果jxcUserKey是null 生成一个
         if (UserKey == null) {
             UserKey = UUID.randomUUID().toString().replaceAll("-", "");
         }
         //存入的键值对    key  为 随机的session值      ,value为uid
         String key = StringAppend.getnewString(Constant.USERKEY, UserKey);
-        Object tt = login.getData();
+        TUser tt = (TUser) login.getData();
+        tt.setPassword(null);
         redisService.set(new RedisDTO(key, tt, Long.valueOf(1800)));
 
-        // 写回jxc-user-key
+        // 写回user-key 到cookie
         Cookie cookie = new Cookie("user-key", UserKey);
         cookie.setMaxAge(1800);
+        cookie.setPath("/");
         resp.addCookie(cookie);
 
         return R.ok("登录成功,即将跳转首页");
@@ -107,7 +115,7 @@ public class UserController {
      * user登出*/
     @RequestMapping("/loginout")
     @ResponseBody
-    public void isloginout(HttpServletResponse resp, @CookieValue(value = "user-key", required = false) String UserKey) throws IOException {
+    public R isloginout(HttpServletResponse resp, @CookieValue(value = "user-key", required = false) String UserKey) throws IOException {
         //判断是否有cookie
         if (UserKey != null && UserKey != "") {
             String key = StringAppend.getnewString(Constant.USERKEY, UserKey);
@@ -120,10 +128,9 @@ public class UserController {
         Cookie cookie = new Cookie("user-key", UserKey);
         cookie.setMaxAge(0);
         cookie.setPath("/");
-        cookie.setHttpOnly(true);//只有后端程序能访问，提高cookie的安全性
         resp.addCookie(cookie);
 
-        resp.sendRedirect("../");
+        return R.ok("注销成功");
 
     }
 
@@ -175,6 +182,7 @@ public class UserController {
         // 写回jxc-user-key
         Cookie cookie = new Cookie("active-key", uuid);
         cookie.setMaxAge(1800);
+        cookie.setPath("/");
         resp.addCookie(cookie);
 
 

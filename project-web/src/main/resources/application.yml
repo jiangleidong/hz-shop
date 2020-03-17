@@ -1,9 +1,19 @@
 spring:
   application:
-    name: user-web
+    name: project-web
+  redis:
+    host: 47.97.249.167
+    port: 6379
+    password: 123456
+
   mvc:
     static-path-pattern: /**
 
+  rabbitmq:
+    host: 47.97.249.167
+    port: 5672
+    username: rabbit
+    password: 123456
 
 server:
   port: 8030
@@ -14,3 +24,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true

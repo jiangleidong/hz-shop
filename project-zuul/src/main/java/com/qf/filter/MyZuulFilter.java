@@ -1,5 +1,6 @@
 package com.qf.filter;
 
+import com.google.gson.Gson;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 
 @Component
 public class MyZuulFilter extends ZuulFilter {
@@ -56,7 +58,11 @@ public class MyZuulFilter extends ZuulFilter {
      */
     @Override
     public Object run() throws ZuulException {
+      //  System.out.println("进来了");
         //得到request的当前的上下文对象
+
+
+
         RequestContext ctx = RequestContext.getCurrentContext();
         //得到request对象
         HttpServletRequest request = ctx.getRequest();
@@ -65,17 +71,26 @@ public class MyZuulFilter extends ZuulFilter {
         //进行路由
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (Constant.USERKEY.equals(cookie.getName())) {
+                if ("user-key".equals(cookie.getName())) {
                     String uuid = cookie.getValue();
                     String key = StringAppend.getnewString(Constant.USERKEY, uuid);
                     R r = redisService.get(new RedisDTO(key, Long.valueOf(1800)));
                     Object data = r.getData();
+
+                    Gson gson = new Gson();
+                    String jsonBDID = gson.toJson(data);
+
                     if (data != null) {
                         //用户已登录
-                        TUser tUser = (TUser) data;
-                        //存入到request域中
-                        request.setAttribute("user", tUser);
-                        return true;
+
+                               //存入到request域中
+
+                       ctx.addZuulRequestHeader("user", jsonBDID);
+
+
+                      //  System.out.println("fikter执行了一次");
+
+                        return null;
 
                     }
 

@@ -192,24 +192,29 @@
 					$("#form1").ajaxSubmit(function(data){
 
 
-					// }
-					// 	if(data.code=="200"){
-					// 		var r =confirm("登录成功,是否跳转首页");
-					// 		if(r){
-					// 			window.location.replace("http://localhost:8030/");
-					// 		}
-					//
-					// 	}
-					// 	if(data.code=="0"){
-					// 		alert(data.message);
-					// 	}
-					// 	if(data.code=="2"){
-					// 		alert(data.message);
-					// 	}
-					//
+
+						if(data.code=="200"){
+							var r =confirm("已经发送邮件到您的邮箱,现在是否返回首页");
+							if(r){
+								window.location.replace("http://localhost:8040/");
+							}
+
+						}
+						if(data.code=="0"){
+							alert(data.message);
+						}
+						if(data.code=="2"){
+							alert(data.message);
+						}
+
 					 });
 		}
 		};
+
+
+
+
+
 
 
 		// function checkRegister(){

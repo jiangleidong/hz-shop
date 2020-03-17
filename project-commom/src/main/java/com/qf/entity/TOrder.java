@@ -1,64 +1,28 @@
 package com.qf.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.Date;
-
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class TOrder implements Serializable {
     private Integer id;
 
-    private String account;
+    private String oid;
 
-    private Integer paytype;
+    private Date creatdata;
 
-    private Integer carry;
+    private Integer statue;
 
-    private BigDecimal rebate;
+    private Long uid;
 
-    private Date createdate;
+    private Long totalprice;
 
-    private String status;
+    private String address;
 
-    private String refundstatus;
+    private Integer phone;
 
-    private BigDecimal amount;
-
-    private BigDecimal fee;
-
-    private BigDecimal ptotal;
-
-    private Integer quantity;
-
-    private String paystatus;
-
-    private String updateamount;
-
-    private String expresscode;
-
-    private String expressname;
-
-    private String otherrequirement;
-
-    private String remark;
-
-    private String expressno;
-
-    private String expresscompanyname;
-
-    private String lowstocks;
-
-    private String confirmsendproductremark;
-
-    private String closedcomment;
-
-    private Integer score;
+    private String name;
 
     public Integer getId() {
         return id;
@@ -68,187 +32,67 @@ public class TOrder implements Serializable {
         this.id = id;
     }
 
-    public String getAccount() {
-        return account;
+    public String getOid() {
+        return oid;
     }
 
-    public void setAccount(String account) {
-        this.account = account == null ? null : account.trim();
+    public void setOid(String oid) {
+        this.oid = oid == null ? null : oid.trim();
     }
 
-    public Integer getPaytype() {
-        return paytype;
+    public Date getCreatdata() {
+        return creatdata;
     }
 
-    public void setPaytype(Integer paytype) {
-        this.paytype = paytype;
+    public void setCreatdata(Date creatdata) {
+        this.creatdata = creatdata;
     }
 
-    public Integer getCarry() {
-        return carry;
+    public Integer getStatue() {
+        return statue;
     }
 
-    public void setCarry(Integer carry) {
-        this.carry = carry;
+    public void setStatue(Integer statue) {
+        this.statue = statue;
     }
 
-    public BigDecimal getRebate() {
-        return rebate;
+    public Long getUid() {
+        return uid;
     }
 
-    public void setRebate(BigDecimal rebate) {
-        this.rebate = rebate;
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
-    public Date getCreatedate() {
-        return createdate;
+    public Long getTotalprice() {
+        return totalprice;
     }
 
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
+    public void setTotalprice(Long totalprice) {
+        this.totalprice = totalprice;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
     }
 
-    public String getRefundstatus() {
-        return refundstatus;
+    public Integer getPhone() {
+        return phone;
     }
 
-    public void setRefundstatus(String refundstatus) {
-        this.refundstatus = refundstatus == null ? null : refundstatus.trim();
+    public void setPhone(Integer phone) {
+        this.phone = phone;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
+    public String getName() {
+        return name;
     }
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public BigDecimal getFee() {
-        return fee;
-    }
-
-    public void setFee(BigDecimal fee) {
-        this.fee = fee;
-    }
-
-    public BigDecimal getPtotal() {
-        return ptotal;
-    }
-
-    public void setPtotal(BigDecimal ptotal) {
-        this.ptotal = ptotal;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getPaystatus() {
-        return paystatus;
-    }
-
-    public void setPaystatus(String paystatus) {
-        this.paystatus = paystatus == null ? null : paystatus.trim();
-    }
-
-    public String getUpdateamount() {
-        return updateamount;
-    }
-
-    public void setUpdateamount(String updateamount) {
-        this.updateamount = updateamount == null ? null : updateamount.trim();
-    }
-
-    public String getExpresscode() {
-        return expresscode;
-    }
-
-    public void setExpresscode(String expresscode) {
-        this.expresscode = expresscode == null ? null : expresscode.trim();
-    }
-
-    public String getExpressname() {
-        return expressname;
-    }
-
-    public void setExpressname(String expressname) {
-        this.expressname = expressname == null ? null : expressname.trim();
-    }
-
-    public String getOtherrequirement() {
-        return otherrequirement;
-    }
-
-    public void setOtherrequirement(String otherrequirement) {
-        this.otherrequirement = otherrequirement == null ? null : otherrequirement.trim();
-    }
-
-    public String getRemark() {
-        return remark;
-    }
-
-    public void setRemark(String remark) {
-        this.remark = remark == null ? null : remark.trim();
-    }
-
-    public String getExpressno() {
-        return expressno;
-    }
-
-    public void setExpressno(String expressno) {
-        this.expressno = expressno == null ? null : expressno.trim();
-    }
-
-    public String getExpresscompanyname() {
-        return expresscompanyname;
-    }
-
-    public void setExpresscompanyname(String expresscompanyname) {
-        this.expresscompanyname = expresscompanyname == null ? null : expresscompanyname.trim();
-    }
-
-    public String getLowstocks() {
-        return lowstocks;
-    }
-
-    public void setLowstocks(String lowstocks) {
-        this.lowstocks = lowstocks == null ? null : lowstocks.trim();
-    }
-
-    public String getConfirmsendproductremark() {
-        return confirmsendproductremark;
-    }
-
-    public void setConfirmsendproductremark(String confirmsendproductremark) {
-        this.confirmsendproductremark = confirmsendproductremark == null ? null : confirmsendproductremark.trim();
-    }
-
-    public String getClosedcomment() {
-        return closedcomment;
-    }
-
-    public void setClosedcomment(String closedcomment) {
-        this.closedcomment = closedcomment == null ? null : closedcomment.trim();
-    }
-
-    public Integer getScore() {
-        return score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }

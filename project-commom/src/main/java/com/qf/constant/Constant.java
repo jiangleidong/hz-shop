@@ -11,6 +11,8 @@ public class Constant {
     public static final String USERKEY ="user:no:";
     //用于存放在redis用户注册的标识前缀
     public static final String USERREGISTER ="user:register:";
+    public static final String USERCART ="user:cart:";
+    public static final String PROFUCTKEY ="PRODUCT:KEY:";
 
 
 }

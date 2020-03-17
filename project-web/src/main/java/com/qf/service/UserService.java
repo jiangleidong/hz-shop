@@ -1,13 +1,17 @@
 package com.qf.service;
 
 
+import com.google.gson.Gson;
 import com.qf.entity.TUser;
 import com.qf.vo.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 @Service
@@ -16,7 +20,8 @@ public class UserService {
     @Autowired
     private RestTemplate restTemplate;
 
-
+    @Autowired
+    private HttpServletRequest request;
 
     public String getone(Long id){
         //调用服务的提供者并获得结果并返回
@@ -29,7 +34,9 @@ public class UserService {
 /*登录功能
 * user登录验证,并把登录的user信息放到redis中,设置市场半小时过期*/
 
-    public R login(TUser tuser){
+    public R login(TUser tuser
+                    //@CookieValue(name = "shopcart-key", required = false) String shopcartkey
+    ){
         //调用服务的提供者并获得结果并返回
 
         //服务提供者返回的是一个String
@@ -37,11 +44,15 @@ public class UserService {
         //R forObject = restTemplate.getForObject(uri, R.class);
 
         String url = "http://user-service/user/login?";
-        R r = restTemplate.postForObject(url, tuser, R.class);
+        TUser tUser = restTemplate.postForObject(url, tuser, TUser.class);
+if(tUser==null){
+    return R.error("查不到该用户");
+}
+         //整合购物车库
+        Long id = tUser.getId();
 
 
-        return r ;
-
+        return R.ok(tUser) ;
     }
 
     /*注册功能
@@ -100,7 +111,16 @@ public class UserService {
     }*/
 
 
+    public TUser getusermessage(){
 
+        String header= request.getHeader("user");
+        System.out.println(header);
+        Gson gson = new Gson();
+        TUser user = gson.fromJson( header , TUser.class);
+       // TUser user = (TUser) request.getAttribute("user");
+
+        return  user;
+}
 
 
 }

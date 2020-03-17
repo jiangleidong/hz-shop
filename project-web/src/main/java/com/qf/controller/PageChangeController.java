@@ -18,7 +18,7 @@ import java.util.List;
 public class PageChangeController {
 
     @RequestMapping("/login")
-    public String login(Model model)  {
+    public String login()  {
         return "login";
     }
 
