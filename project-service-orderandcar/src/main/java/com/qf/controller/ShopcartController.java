@@ -37,19 +37,25 @@ public class ShopcartController {
     R clean(String id){
         return cartService.clean(id);
     };
+
     @ResponseBody
     @RequestMapping("update")
     R update(String id, Long pid, int count){
        return cartService.update(id,pid,count);
     };
+
     @ResponseBody
     @RequestMapping("showcart")
     R showCart(String id){
         return cartService.showCart(id);
     };
+
     @ResponseBody
     @RequestMapping("merge")
     R merge(Long id, String keyid){
-        return cartService.merge(id,keyid);
-    };
+        return cartService.merge(id,keyid); };
+
+
+
+
 }

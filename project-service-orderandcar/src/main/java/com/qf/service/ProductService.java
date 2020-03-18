@@ -1,9 +1,12 @@
 package com.qf.service;
 
+import com.qf.entity.TOrderdetail;
 import com.qf.entity.TProduct;
 import com.qf.mapper.TProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program: hz-shop
@@ -23,6 +26,7 @@ public class ProductService  {
         return productMapper.selectByPrimaryKey(pid);
 
     }
+
 
 
 }

@@ -16,4 +16,8 @@ public class StringAppend {
     public static String getnewString(String a,Long b,String c){
         return new StringBuilder().append(a).append(b).append(c).toString();
     }
+
+    public static String getnewString(String a,Long b){
+        return new StringBuilder().append(a).append(b).toString();
+    }
 }

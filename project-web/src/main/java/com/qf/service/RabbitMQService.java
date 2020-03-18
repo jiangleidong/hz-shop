@@ -22,10 +22,11 @@ public class RabbitMQService {
     private RabbitTemplate rabbitTemplate;
 
     public void send(String message){
-        rabbitTemplate.convertAndSend("my_topic_exchange","qf.java.apple",message);
+        rabbitTemplate.convertAndSend("my_topic_exchange","qf.order.delect",message);
     }
 
+
     public void send(OrderDTO orderDTO){
-        rabbitTemplate.convertAndSend("my_topic_exchange","qf.java.orange",orderDTO);
+        rabbitTemplate.convertAndSend("my_topic_exchange","qf.order.creatorder",orderDTO);
     }
 }

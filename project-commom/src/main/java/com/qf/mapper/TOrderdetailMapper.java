@@ -2,6 +2,8 @@ package com.qf.mapper;
 
 import com.qf.entity.TOrderdetail;
 
+import java.util.List;
+
 public interface TOrderdetailMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface TOrderdetailMapper {
     int updateByPrimaryKeySelective(TOrderdetail record);
 
     int updateByPrimaryKey(TOrderdetail record);
+
+    public int savelist(List<TOrderdetail> tds);
 }

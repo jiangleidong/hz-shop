@@ -1,12 +1,11 @@
 package com.qf.entity;
 
-import lombok.Data;
-
 import java.io.Serializable;
 
-@Data
 public class TOrderdetail implements Serializable {
     private Integer id;
+
+    private Long uid;
 
     private String oid;
 
@@ -16,7 +15,7 @@ public class TOrderdetail implements Serializable {
 
     private String pname;
 
-    private Integer count;
+    private Integer number;
 
     private String imgurl;
 
@@ -26,6 +25,14 @@ public class TOrderdetail implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Long getUid() {
+        return uid;
+    }
+
+    public void setUid(Long uid) {
+        this.uid = uid;
     }
 
     public String getOid() {
@@ -44,7 +51,13 @@ public class TOrderdetail implements Serializable {
         this.pid = pid;
     }
 
+    public Long getPrice() {
+        return price;
+    }
 
+    public void setPrice(Long price) {
+        this.price = price;
+    }
 
     public String getPname() {
         return pname;
@@ -54,12 +67,12 @@ public class TOrderdetail implements Serializable {
         this.pname = pname == null ? null : pname.trim();
     }
 
-    public Integer getCount() {
-        return count;
+    public Integer getNumber() {
+        return number;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public String getImgurl() {

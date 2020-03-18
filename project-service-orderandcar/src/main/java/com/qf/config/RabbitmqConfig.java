@@ -43,9 +43,9 @@ public class RabbitmqConfig {
         return new Queue("creatorderlist");
     }
 
-    @Bean("queue2")
+    @Bean("queue20")
     public Queue getQueue1(){
-        return new Queue("delectorder");
+        return new Queue("changecart");
     }
 
 
@@ -53,21 +53,21 @@ public class RabbitmqConfig {
 
 
 
-    @Bean
-    public Binding getBinding2(@Qualifier("queue2") Queue queue, TopicExchange topicExchange){
-        return BindingBuilder.bind(queue).to(topicExchange).with("qf.java.*");
-    }
+
 
     @Bean
     public Binding getBinding1(@Qualifier("queue10") Queue queue, TopicExchange topicExchange){
-        return BindingBuilder.bind(queue).to(topicExchange).with("qf.java.*");
+        return BindingBuilder.bind(queue).to(topicExchange).with("qf.order.creatorder");
     }
 
     @Bean
     public Binding getBinding3(@Qualifier("queue11") Queue queue, TopicExchange topicExchange){
-        return BindingBuilder.bind(queue).to(topicExchange).with("qf.java.*");
+        return BindingBuilder.bind(queue).to(topicExchange).with("qf.order.creatorder");
     }
-    
+    @Bean
+    public Binding getBinding2(@Qualifier("queue20") Queue queue, TopicExchange topicExchange){
+        return BindingBuilder.bind(queue).to(topicExchange).with("qf.order.creatorder");
+    }
     
 
 }

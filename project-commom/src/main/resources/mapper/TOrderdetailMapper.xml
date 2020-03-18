@@ -3,15 +3,16 @@
 <mapper namespace="com.qf.mapper.TOrderdetailMapper">
   <resultMap id="BaseResultMap" type="com.qf.entity.TOrderdetail">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uid" jdbcType="BIGINT" property="uid" />
     <result column="oid" jdbcType="VARCHAR" property="oid" />
     <result column="pid" jdbcType="INTEGER" property="pid" />
-    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
     <result column="pname" jdbcType="VARCHAR" property="pname" />
-    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="number" jdbcType="INTEGER" property="number" />
     <result column="imgurl" jdbcType="VARCHAR" property="imgurl" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, oid, pid, price, pname, count, imgurl
+    id, uid, oid, pid, price, pname, number, imgurl
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -24,18 +25,21 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qf.entity.TOrderdetail">
-    insert into t_orderdetail (id, oid, pid, 
-      price, pname, count, 
-      imgurl)
-    values (#{id,jdbcType=INTEGER}, #{oid,jdbcType=VARCHAR}, #{pid,jdbcType=INTEGER}, 
-      #{price,jdbcType=DOUBLE}, #{pname,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, 
-      #{imgurl,jdbcType=VARCHAR})
+    insert into t_orderdetail (id, uid, oid, 
+      pid, price, pname, 
+      number, imgurl)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=BIGINT}, #{oid,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{pname,jdbcType=VARCHAR}, 
+      #{number,jdbcType=INTEGER}, #{imgurl,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qf.entity.TOrderdetail">
     insert into t_orderdetail
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
+      </if>
+      <if test="uid != null">
+        uid,
       </if>
       <if test="oid != null">
         oid,
@@ -49,8 +53,8 @@
       <if test="pname != null">
         pname,
       </if>
-      <if test="count != null">
-        count,
+      <if test="number != null">
+        number,
       </if>
       <if test="imgurl != null">
         imgurl,
@@ -60,6 +64,9 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="uid != null">
+        #{uid,jdbcType=BIGINT},
+      </if>
       <if test="oid != null">
         #{oid,jdbcType=VARCHAR},
       </if>
@@ -67,13 +74,13 @@
         #{pid,jdbcType=INTEGER},
       </if>
       <if test="price != null">
-        #{price,jdbcType=DOUBLE},
+        #{price,jdbcType=DECIMAL},
       </if>
       <if test="pname != null">
         #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="count != null">
-        #{count,jdbcType=INTEGER},
+      <if test="number != null">
+        #{number,jdbcType=INTEGER},
       </if>
       <if test="imgurl != null">
         #{imgurl,jdbcType=VARCHAR},
@@ -83,6 +90,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.qf.entity.TOrderdetail">
     update t_orderdetail
     <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
       <if test="oid != null">
         oid = #{oid,jdbcType=VARCHAR},
       </if>
@@ -90,13 +100,13 @@
         pid = #{pid,jdbcType=INTEGER},
       </if>
       <if test="price != null">
-        price = #{price,jdbcType=DOUBLE},
+        price = #{price,jdbcType=DECIMAL},
       </if>
       <if test="pname != null">
         pname = #{pname,jdbcType=VARCHAR},
       </if>
-      <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
+      <if test="number != null">
+        number = #{number,jdbcType=INTEGER},
       </if>
       <if test="imgurl != null">
         imgurl = #{imgurl,jdbcType=VARCHAR},
@@ -106,12 +116,22 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qf.entity.TOrderdetail">
     update t_orderdetail
-    set oid = #{oid,jdbcType=VARCHAR},
+    set uid = #{uid,jdbcType=BIGINT},
+      oid = #{oid,jdbcType=VARCHAR},
       pid = #{pid,jdbcType=INTEGER},
-      price = #{price,jdbcType=DOUBLE},
+      price = #{price,jdbcType=DECIMAL},
       pname = #{pname,jdbcType=VARCHAR},
-      count = #{count,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
       imgurl = #{imgurl,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="savelist" parameterType="java.util.List">
+    insert into t_orderdetail (uid,oid,pid,price,pname,number,imgurl) values
+    <foreach collection="list" item="td" separator=",">
+      (#{td.uid,jdbcType=BIGINT}, #{td.oid,jdbcType=VARCHAR}, #{td.pid,jdbcType=INTEGER},
+      #{td.price,jdbcType=DECIMAL}, #{td.pname,jdbcType=VARCHAR}, #{td.number,jdbcType=INTEGER},
+      #{td.imgurl,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
 </mapper>
